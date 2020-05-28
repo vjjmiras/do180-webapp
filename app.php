@@ -4,16 +4,15 @@
   </head>
   <body>
     <?php
-      // v2
-      $quotes = array(
-        "Der frühe Vogel fängt den Wurm.",
-        "Pech im Spiel, Glück in der Liebe.",
-        "Keine Antwort ist auch eine Antwort.",
-        "Der Hunger kommt beim Essen.",
-        "Es ist leichter sich zu entschuldigen als vorher um Erlaubnis zu fragen.",
-        "Fliegen und Freunde kommen im Sommer."
-      );
-      // end of v2
+      // v3
+      $quotes_file = fopen("quotes.src", "r") or die("Unable to open file!");
+      $quotes = array();
+      while(!feof($quotes_file)) {
+        array_push($quotes,trim(fgets($quotes_file)));
+      }
+      fclose($quotes_file);
+    // end of v3
+
       echo $quotes[rand(0,count($quotes)-1)] . "<br/>\n";
     ?>
   </body>
